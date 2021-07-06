@@ -1,7 +1,7 @@
 {
-  "name": "@snapshot-labs/snapshot.js",
+  "name": "@tomochain/snapshot.js",
   "version": "0.1.11",
-  "repository": "snapshot-labs/snapshot.js",
+  "repository": "tomochain/snapshot.js",
   "license": "MIT",
   "main": "dist/snapshot.cjs.js",
   "module": "dist/snapshot.esm.js",
