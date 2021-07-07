@@ -1,4 +1,32 @@
 {
+  "88": {
+    "key": "88",
+    "name": "Tomochain",
+    "chainId": 1,
+    "network": "Tomochain",
+    "multicall": "0x41f716Ff2F2D6ad438EaD08F872263F7741E7262",
+    "rpc": [
+      "https://rpc.tomochain.com"
+    ],
+    "ws": [
+      "wss://ws.tomochain.com"
+    ],
+    "explorer": "https://scan.tomochain.com"
+  },
+  "89": {
+    "key": "89",
+    "name": "Tomochain tesetnet",
+    "chainId": 89,
+    "network": "Tomochain Testnet",
+    "multicall": "0x41f716Ff2F2D6ad438EaD08F872263F7741E7262",
+    "rpc": [
+      "https://rpc.testnet.tomochain.com"
+    ],
+    "ws": [
+      "wss://ws.testnet.tomochain.com"
+    ],
+    "explorer": "https://scan.testnet.tomochain.com"
+  },
   "1": {
     "key": "1",
     "name": "Ethereum Mainnet",
