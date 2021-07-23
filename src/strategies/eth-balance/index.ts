@@ -26,6 +26,7 @@ export async function strategy(
     ]),
     { blockTag }
   );
+
   return Object.fromEntries(
     response.map((value, i) => [
       addresses[i],

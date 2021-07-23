@@ -16,6 +16,7 @@ export default async function validate(
   if (onlyMembers) return false;
 
   if (minScore) {
+    console.log("minScore ", minScore)
     const scores = await getScores(
       space.id || space.key,
       strategies,
@@ -23,6 +24,7 @@ export default async function validate(
       '',
       [author]
     );
+    console.log("scores ", scores)
     const totalScore: any = scores
       .map((score: any) => Object.values(score).reduce((a, b: any) => a + b, 0))
       .reduce((a, b: any) => a + b, 0);

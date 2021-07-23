@@ -29,7 +29,7 @@ export const SNAPSHOT_SUBGRAPH_URL = {
   '42': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-kovan'
 };
 
-export const SNAPSHOT_SCORE_API = 'https://score.snapshot.org/api/scores';
+export const SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100//api/scores';
 
 export async function call(provider, abi: any[], call: any[], options?) {
   const contract = new Contract(call[0], abi, provider);
@@ -48,6 +48,7 @@ export async function multicall(
   calls: any[],
   options?
 ) {
+  console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
   const multi = new Contract(
     networks[network].multicall,
     multicallAbi,
@@ -132,6 +133,7 @@ export async function getScores(
       strategies,
       addresses
     };
+    console.log("SNAPSHOT_SCORE_API ", SNAPSHOT_SCORE_API)
     const res = await fetch(SNAPSHOT_SCORE_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -152,7 +154,17 @@ export async function getScoresDirect(
   addresses: string[],
   snapshot: number | string = 'latest'
 ) {
-  console.log('getScoresDirect');
+  let test = strategies[0]
+  console.log(_strategies[test.name])
+  _strategies[test.name](
+    space,
+    network,
+    provider,
+    addresses,
+    test.params,
+    snapshot
+  )
+
   try {
     return await Promise.all(
       strategies.map((strategy) =>

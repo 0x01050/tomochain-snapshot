@@ -9,6 +9,7 @@ export async function getDelegations(
   options,
   snapshot
 ) {
+  console.log("getDelegations ", getDelegations)
   const addressesLc = addresses.map((addresses) => addresses.toLowerCase());
   const spaceIn = ['', space];
   if (space.includes('.eth')) spaceIn.push(space.replace('.eth', ''));

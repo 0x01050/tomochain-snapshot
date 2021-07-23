@@ -79,6 +79,7 @@ describe(`\nTest strategy "${strategy}"`, () => {
 
   it('File examples.json must use a snapshot block number in the past', async () => {
     expect(typeof example.snapshot).toBe('number');
+    console.log("example.network ", example.network)
     const provider = snapshot.utils.getProvider(example.network);
     const blockNumber = await snapshot.utils.getBlockNumber(provider);
     expect(example.snapshot).toBeLessThanOrEqual(blockNumber);
