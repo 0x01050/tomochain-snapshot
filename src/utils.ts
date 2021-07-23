@@ -29,7 +29,7 @@ export const SNAPSHOT_SUBGRAPH_URL = {
   '42': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-kovan'
 };
 
-export const SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100//api/scores';
+export const SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100/api/scores';
 
 export async function call(provider, abi: any[], call: any[], options?) {
   const contract = new Contract(call[0], abi, provider);
