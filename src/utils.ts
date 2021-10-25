@@ -22,6 +22,7 @@ import { signMessage, getBlockNumber } from './utils/web3';
 import { getHash, verify } from './sign/utils';
 import gateways from './gateways.json';
 import networks from './networks.json';
+const Web3 = require('web3')
 
 export const SNAPSHOT_SUBGRAPH_URL = {
   '1': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot',
@@ -48,21 +49,24 @@ export async function multicall(
   calls: any[],
   options?
 ) {
-  console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
-  const multi = new Contract(
-    networks[network].multicall,
-    multicallAbi,
-    provider
-  );
+  // console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
+  // const multi = new Contract(
+  //   networks[network].multicall,
+  //   multicallAbi,
+  //   provider
+  // );
+  const web3 = new Web3(provider)
+  const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
+
   const itf = new Interface(abi);
   try {
-    const [, res] = await multi.aggregate(
+    const [, res] = await multi.methods.aggregate(
       calls.map((call) => [
         call[0].toLowerCase(),
         itf.encodeFunctionData(call[1], call[2])
-      ]),
-      options || {}
-    );
+      ])
+    ).call({}, options.blockTag);
+
     return res.map((call, i) => itf.decodeFunctionResult(calls[i][1], call));
   } catch (e) {
     return Promise.reject(e);
