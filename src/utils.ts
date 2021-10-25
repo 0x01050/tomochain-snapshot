@@ -59,15 +59,19 @@ export async function multicall(
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
 
   const itf = new Interface(abi);
+  console.log(calls.map((call) => [
+    call[0].toLowerCase(),
+    itf.encodeFunctionData(call[1], call[2])
+  ]))
   try {
-    const [, res] = await multi.methods.aggregate(
+    const res = await multi.methods.aggregate(
       calls.map((call) => [
         call[0].toLowerCase(),
         itf.encodeFunctionData(call[1], call[2])
       ])
     ).call({}, options.blockTag);
 
-    return res.map((call, i) => itf.decodeFunctionResult(calls[i][1], call));
+    return res;
   } catch (e) {
     return Promise.reject(e);
   }

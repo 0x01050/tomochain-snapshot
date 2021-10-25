@@ -42,7 +42,7 @@ const strategies = [
       space,
       strategies,
       network,
-      new JsonRpcProvider("http://135.125.8.163:8545"),
+      new JsonRpcProvider("https://rpc.tomochain.com"),
       addresses,
       41801832
     );
