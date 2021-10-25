@@ -4,7 +4,7 @@
     "name": "Tomochain",
     "chainId": 88,
     "network": "Tomochain",
-    "multicall": "0x41f716Ff2F2D6ad438EaD08F872263F7741E7262",
+    "multicall": "0x862551b81F143e1b812C489601Ac3729C19C9948",
     "rpc": [
       "https://rpc.tomochain.com"
     ],

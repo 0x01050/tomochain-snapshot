@@ -1,0 +1,32 @@
+{
+    "name": "Tomochain",
+    "about": "Tomochain Network",
+    "admins": [
+        "0xd106159eC58BD2EAf5B62eF4e9cDb286170B0Bb9"
+    ],
+    "avatar": "https://tomochain.com/wp-content/uploads/2020/02/logo-tomochain-fl.svg",
+    "symbol": "TOMO",
+    "filters": {
+        "minScore": 1
+    },
+    "members": [
+        "0xd106159eC58BD2EAf5B62eF4e9cDb286170B0Bb9"
+    ],
+    "network": "89",
+    "strategies": [
+        {
+            "name": "erc20-balance-of",
+            "params": {
+                "symbol": "tDao",
+                "decimals": 18
+            }
+        },{
+            "name": "tDao-lp",
+            "params": {
+                "symbol": "tDao_LP",
+                "decimals": 18
+            }
+        }
+    ],
+    "_activeProposals": 0
+}

@@ -105,6 +105,7 @@ import { strategy as infinityProtocolPools } from './infinityprotocol-liquidity-
 import { strategy as aaveGovernancePower } from './aave-governance-power';
 import { strategy as cake } from './cake';
 import { strategy as planetFinance } from './planet-finance';
+import { strategy as tDaoLP } from './tDao-lp';
 
 export default {
   balancer,
@@ -213,5 +214,6 @@ export default {
   'infinityprotocol-liquidity-pools': infinityProtocolPools,
   'aave-governance-power': aaveGovernancePower,
   cake,
-  'planet-finance': planetFinance
+  'planet-finance': planetFinance,
+  'tDao-lp': tDaoLP
 };

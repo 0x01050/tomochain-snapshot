@@ -155,7 +155,6 @@ export async function getScoresDirect(
   snapshot: number | string = 'latest'
 ) {
   let test = strategies[0]
-  console.log(_strategies[test.name])
   _strategies[test.name](
     space,
     network,
@@ -164,7 +163,17 @@ export async function getScoresDirect(
     test.params,
     snapshot
   )
-
+  console.log(
+    "strategies ", strategies
+  )
+  console.log(
+    space,
+    network,
+    provider,
+    addresses,
+    strategies[0].params,
+    snapshot
+  )
   try {
     return await Promise.all(
       strategies.map((strategy) =>
