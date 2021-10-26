@@ -57,12 +57,11 @@ export async function multicall(
   // );
   const web3 = new Web3(provider)
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
-
+  console.log(
+    multicallAbi, networks[network].multicall
+  )
   const itf = new Interface(abi);
-  console.log(calls.map((call) => [
-    call[0].toLowerCase(),
-    itf.encodeFunctionData(call[1], call[2])
-  ]))
+
   try {
     const res = await multi.methods.aggregate(
       calls.map((call) => [
@@ -162,26 +161,6 @@ export async function getScoresDirect(
   addresses: string[],
   snapshot: number | string = 'latest'
 ) {
-  let test = strategies[0]
-  _strategies[test.name](
-    space,
-    network,
-    provider,
-    addresses,
-    test.params,
-    snapshot
-  )
-  console.log(
-    "strategies ", strategies
-  )
-  console.log(
-    space,
-    network,
-    provider,
-    addresses,
-    strategies[0].params,
-    snapshot
-  )
   try {
     return await Promise.all(
       strategies.map((strategy) =>
