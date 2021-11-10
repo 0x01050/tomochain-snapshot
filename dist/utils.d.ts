@@ -1,0 +1,48 @@
+import { StaticJsonRpcProvider } from '@ethersproject/providers';
+import Multicaller from './utils/multicaller';
+import getProvider from './utils/provider';
+import { decodeContenthash, validateContent, isValidContenthash, encodeContenthash, resolveENSContentHash, resolveContent } from './utils/contentHash';
+import { signMessage, getBlockNumber } from './utils/web3';
+import { getHash, verify } from './sign/utils';
+export declare const SNAPSHOT_SUBGRAPH_URL: {
+    1: string;
+    4: string;
+    42: string;
+};
+export declare const SNAPSHOT_SCORE_API = "http://206.189.39.242:9100/api/scores";
+export declare function call(provider: any, abi: any[], call: any[], options?: any): Promise<any>;
+export declare function multicall(network: string, provider: any, abi: any[], calls: any[], options?: any): Promise<any>;
+export declare function subgraphRequest(url: string, query: any, options?: any): Promise<any>;
+export declare function getUrl(uri: any): any;
+export declare function ipfsGet(gateway: string, ipfsHash: string, protocolType?: string): Promise<any>;
+export declare function sendTransaction(web3: any, contractAddress: string, abi: any[], action: string, params: any[], overrides?: {}): Promise<any>;
+export declare function getScores(space: string, strategies: any[], network: string, provider: StaticJsonRpcProvider | string, addresses: string[], snapshot?: number | string): Promise<any>;
+export declare function getScoresDirect(space: string, strategies: any[], network: string, provider: any, addresses: string[], snapshot?: number | string): Promise<any[]>;
+export declare function validateSchema(schema: any, data: any): true | import("ajv").ErrorObject<string, Record<string, any>, unknown>[] | null | undefined;
+declare const _default: {
+    call: typeof call;
+    multicall: typeof multicall;
+    subgraphRequest: typeof subgraphRequest;
+    ipfsGet: typeof ipfsGet;
+    sendTransaction: typeof sendTransaction;
+    getScores: typeof getScores;
+    getScoresDirect: typeof getScoresDirect;
+    validateSchema: typeof validateSchema;
+    getProvider: typeof getProvider;
+    decodeContenthash: typeof decodeContenthash;
+    validateContent: typeof validateContent;
+    isValidContenthash: typeof isValidContenthash;
+    encodeContenthash: typeof encodeContenthash;
+    resolveENSContentHash: typeof resolveENSContentHash;
+    resolveContent: typeof resolveContent;
+    signMessage: typeof signMessage;
+    getBlockNumber: typeof getBlockNumber;
+    Multicaller: typeof Multicaller;
+    validations: {
+        basic: typeof import("./validations/basic").default;
+        aave: typeof import("./validations/aave").default;
+    };
+    getHash: typeof getHash;
+    verify: typeof verify;
+};
+export default _default;
