@@ -57,9 +57,7 @@ export async function multicall(
   // );
   const web3 = new Web3(provider)
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
-  console.log(
-    multicallAbi, networks[network].multicall
-  )
+
   const itf = new Interface(abi);
 
   try {
