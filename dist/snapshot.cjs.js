@@ -9671,7 +9671,7 @@ var SNAPSHOT_SUBGRAPH_URL = {
     '4': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-rinkeby',
     '42': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-kovan'
 };
-var SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100/api/scores';
+var SNAPSHOT_SCORE_API = 'https://masterdao-score.tomochain.com/api/scores';
 function call(provider, abi, call, options) {
     return __awaiter(this, void 0, void 0, function () {
         var contract, params, e_1;
