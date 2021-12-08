@@ -22,6 +22,7 @@ import { signMessage, getBlockNumber } from './utils/web3';
 import { getHash, verify } from './sign/utils';
 import gateways from './gateways.json';
 import networks from './networks.json';
+const Web3 = require('web3')
 
 export const SNAPSHOT_SUBGRAPH_URL = {
   '1': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot',
@@ -29,7 +30,7 @@ export const SNAPSHOT_SUBGRAPH_URL = {
   '42': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-kovan'
 };
 
-export const SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100/api/scores';
+export const SNAPSHOT_SCORE_API = 'https://masterdao-score.tomochain.com/api/scores';
 
 export async function call(provider, abi: any[], call: any[], options?) {
   const contract = new Contract(call[0], abi, provider);
@@ -48,22 +49,26 @@ export async function multicall(
   calls: any[],
   options?
 ) {
-  console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
-  const multi = new Contract(
-    networks[network].multicall,
-    multicallAbi,
-    provider
-  );
+  // console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
+  // const multi = new Contract(
+  //   networks[network].multicall,
+  //   multicallAbi,
+  //   provider
+  // );
+  const web3 = new Web3(provider)
+  const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
+
   const itf = new Interface(abi);
+
   try {
-    const [, res] = await multi.aggregate(
+    const res = await multi.methods.aggregate(
       calls.map((call) => [
         call[0].toLowerCase(),
         itf.encodeFunctionData(call[1], call[2])
-      ]),
-      options || {}
-    );
-    return res.map((call, i) => itf.decodeFunctionResult(calls[i][1], call));
+      ])
+    ).call({}, options.blockTag);
+
+    return res;
   } catch (e) {
     return Promise.reject(e);
   }
@@ -154,26 +159,6 @@ export async function getScoresDirect(
   addresses: string[],
   snapshot: number | string = 'latest'
 ) {
-  let test = strategies[0]
-  _strategies[test.name](
-    space,
-    network,
-    provider,
-    addresses,
-    test.params,
-    snapshot
-  )
-  console.log(
-    "strategies ", strategies
-  )
-  console.log(
-    space,
-    network,
-    provider,
-    addresses,
-    strategies[0].params,
-    snapshot
-  )
   try {
     return await Promise.all(
       strategies.map((strategy) =>

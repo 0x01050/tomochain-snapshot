@@ -9,7 +9,7 @@ export declare const SNAPSHOT_SUBGRAPH_URL: {
     4: string;
     42: string;
 };
-export declare const SNAPSHOT_SCORE_API = "http://206.189.39.242:9100/api/scores";
+export declare const SNAPSHOT_SCORE_API = "https://masterdao-score.tomochain.com/api/scores";
 export declare function call(provider: any, abi: any[], call: any[], options?: any): Promise<any>;
 export declare function multicall(network: string, provider: any, abi: any[], calls: any[], options?: any): Promise<any>;
 export declare function subgraphRequest(url: string, query: any, options?: any): Promise<any>;

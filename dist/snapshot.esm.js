@@ -531,7 +531,7 @@ function strategy$4(space, network, provider, addresses, options, snapshot) {
                     return [4 /*yield*/, multicall(network, provider, abi$2, addresses.map(function (address) { return [options.address, 'balanceOf', [address]]; }), { blockTag: blockTag })];
                 case 1:
                     response = _a.sent();
-                    return [2 /*return*/, Object.fromEntries(response.map(function (value, i) { return [
+                    return [2 /*return*/, Object.fromEntries(response.returnData.map(function (value, i) { return [
                             addresses[i],
                             parseFloat(formatUnits(value.toString(), options.decimals))
                         ]; }))];
@@ -1047,7 +1047,7 @@ var networks = {
 	network: "Tomochain",
 	multicall: "0x862551b81F143e1b812C489601Ac3729C19C9948",
 	rpc: [
-		"https://rpc.tomochain.com"
+		"http://135.125.8.163:8585"
 	],
 	ws: [
 		"wss://ws.tomochain.com"
@@ -9653,12 +9653,13 @@ function verify$1(address, sig, data) {
     });
 }
 
+var Web3 = require('web3');
 var SNAPSHOT_SUBGRAPH_URL = {
     '1': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot',
     '4': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-rinkeby',
     '42': 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot-kovan'
 };
-var SNAPSHOT_SCORE_API = 'http://206.189.39.242:9100/api/scores';
+var SNAPSHOT_SCORE_API = 'https://masterdao-score.tomochain.com/api/scores';
 function call(provider, abi, call, options) {
     return __awaiter(this, void 0, void 0, function () {
         var contract, params, e_1;
@@ -9682,25 +9683,25 @@ function call(provider, abi, call, options) {
 }
 function multicall(network, provider, abi$1, calls, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var multi, itf, _a, res, e_2;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var web3, multi, itf, res, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    console.log(networks[network].multicall, options, calls[0], calls[1], calls[2]);
-                    multi = new Contract(networks[network].multicall, abi, provider);
+                    web3 = new Web3(provider);
+                    multi = new web3.eth.Contract(abi, networks[network].multicall);
                     itf = new Interface(abi$1);
-                    _b.label = 1;
+                    _a.label = 1;
                 case 1:
-                    _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, multi.aggregate(calls.map(function (call) { return [
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, multi.methods.aggregate(calls.map(function (call) { return [
                             call[0].toLowerCase(),
                             itf.encodeFunctionData(call[1], call[2])
-                        ]; }), options || {})];
+                        ]; })).call({}, options.blockTag)];
                 case 2:
-                    _a = _b.sent(), res = _a[1];
-                    return [2 /*return*/, res.map(function (call, i) { return itf.decodeFunctionResult(calls[i][1], call); })];
+                    res = _a.sent();
+                    return [2 /*return*/, res];
                 case 3:
-                    e_2 = _b.sent();
+                    e_2 = _a.sent();
                     return [2 /*return*/, Promise.reject(e_2)];
                 case 4: return [2 /*return*/];
             }
@@ -9794,17 +9795,11 @@ function getScores$1(space, strategies, network, provider, addresses, snapshot) 
 function getScoresDirect(space, strategies$1, network, provider, addresses, snapshot) {
     if (snapshot === void 0) { snapshot = 'latest'; }
     return __awaiter(this, void 0, void 0, function () {
-        var test, e_4;
+        var e_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    test = strategies$1[0];
-                    strategies[test.name](space, network, provider, addresses, test.params, snapshot);
-                    console.log("strategies ", strategies$1);
-                    console.log(space, network, provider, addresses, strategies$1[0].params, snapshot);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, Promise.all(strategies$1.map(function (strategy) {
                             var _a, _b, _c;
                             return (snapshot !== 'latest' && ((_a = strategy.params) === null || _a === void 0 ? void 0 : _a.start) > snapshot) ||
@@ -9814,11 +9809,11 @@ function getScoresDirect(space, strategies$1, network, provider, addresses, snap
                                 ? {}
                                 : strategies[strategy.name](space, network, provider, addresses, strategy.params, snapshot);
                         }))];
-                case 2: return [2 /*return*/, _a.sent()];
-                case 3:
+                case 1: return [2 /*return*/, _a.sent()];
+                case 2:
                     e_4 = _a.sent();
                     return [2 /*return*/, Promise.reject(e_4)];
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     });
