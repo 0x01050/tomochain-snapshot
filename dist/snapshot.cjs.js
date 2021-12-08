@@ -10001,7 +10001,7 @@ function multicall(network, provider, abi$1, calls, options) {
                     _a.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, multi.methods.aggregate(calls.map(function (call) { return [
                             call[0].toLowerCase(),
-                            itf.encodeFunctionData(call[1], call[2][0])
+                            itf.encodeFunctionData(call[1], call[2])
                         ]; })).call({}, options.blockTag)];
                 case 2:
                     res = _a.sent();
