@@ -9687,6 +9687,7 @@ function multicall(network, provider, abi$1, calls, options) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log(networks[network].multicall, options, calls[0], calls[1], calls[2]);
                     web3 = new Web3(provider);
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
                     itf = new Interface(abi$1);

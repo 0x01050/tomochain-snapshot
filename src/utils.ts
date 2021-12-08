@@ -49,7 +49,7 @@ export async function multicall(
   calls: any[],
   options?
 ) {
-  // console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
+  console.log(networks[network].multicall, options, calls[0], calls[1], calls[2])
   // const multi = new Contract(
   //   networks[network].multicall,
   //   multicallAbi,
