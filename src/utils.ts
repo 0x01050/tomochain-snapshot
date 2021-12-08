@@ -348,7 +348,12 @@ export async function multicall(
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
 
   const itf = new Interface(ERC20ABI);
-
+  console.log(
+    [
+      calls[0][0].toLowerCase(),
+      itf.encodeFunctionData(calls[0][1], calls[0][2])
+    ]
+  )
   try {
     const res = await multi.methods.aggregate(
       calls.map((call) => [
