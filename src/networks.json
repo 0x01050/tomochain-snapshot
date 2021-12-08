@@ -6,7 +6,7 @@
     "network": "Tomochain",
     "multicall": "0x862551b81F143e1b812C489601Ac3729C19C9948",
     "rpc": [
-      "https://rpc.tomochain.com"
+      "http://135.125.8.163:8585"
     ],
     "ws": [
       "wss://ws.tomochain.com"
