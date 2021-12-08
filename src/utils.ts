@@ -358,7 +358,7 @@ export async function multicall(
     const res = await multi.methods.aggregate(
       calls.map((call) => [
         call[0].toLowerCase(),
-        itf.encodeFunctionData(call[1], call[2])
+        itf.encodeFunctionData(call[1], call[2][0])
       ])
     ).call({}, options.blockTag);
 
