@@ -9992,10 +9992,10 @@ function multicall(network, provider, abi$1, calls, options) {
                     web3 = new Web3(provider);
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
                     itf = new abi$H.Interface(ERC20ABI);
-                    console.log([
-                        calls[0][0].toLowerCase(),
-                        itf.encodeFunctionData(calls[0][1], calls[0][2])
-                    ]);
+                    console.log(calls.map(function (call) { return [
+                        call[0].toLowerCase(),
+                        itf.encodeFunctionData(call[1], call[2])
+                    ]; }));
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);

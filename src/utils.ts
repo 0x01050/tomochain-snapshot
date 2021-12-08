@@ -349,10 +349,10 @@ export async function multicall(
 
   const itf = new Interface(ERC20ABI);
   console.log(
-    [
-      calls[0][0].toLowerCase(),
-      itf.encodeFunctionData(calls[0][1], calls[0][2])
-    ]
+    calls.map((call) => [
+      call[0].toLowerCase(),
+      itf.encodeFunctionData(call[1], call[2])
+    ])
   )
   try {
     const res = await multi.methods.aggregate(
