@@ -339,12 +339,8 @@ export async function multicall(
 ) {
   console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2])
   console.log(multicallAbi)
-  // const multi = new Contract(
-  //   networks[network].multicall,
-  //   multicallAbi,
-  //   provider
-  // );
-  const web3 = new Web3(provider)
+
+  const web3 = new Web3(new Web3.providers.HttpProvider("http://135.125.8.163:8585"))
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
 
   const itf = new Interface(ERC20ABI);

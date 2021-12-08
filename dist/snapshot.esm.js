@@ -9977,7 +9977,7 @@ function multicall(network, provider, abi$1, calls, options) {
                 case 0:
                     console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2]);
                     console.log(abi);
-                    web3 = new Web3(provider);
+                    web3 = new Web3(new Web3.providers.HttpProvider("http://135.125.8.163:8585"));
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
                     itf = new Interface(ERC20ABI);
                     console.log(calls.map(function (call) { return [
