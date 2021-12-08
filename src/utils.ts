@@ -361,7 +361,7 @@ export async function multicall(
         itf.encodeFunctionData(call[1], call[2])
       ])
     ).call({}, options.blockTag);
-
+    console.log(res);
     return res;
   } catch (e) {
     return Promise.reject(e);

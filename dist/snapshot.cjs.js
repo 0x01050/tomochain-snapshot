@@ -10005,6 +10005,7 @@ function multicall(network, provider, abi$1, calls, options) {
                         ]; })).call({}, options.blockTag)];
                 case 2:
                     res = _a.sent();
+                    console.log(res);
                     return [2 /*return*/, res];
                 case 3:
                     e_2 = _a.sent();
