@@ -337,19 +337,15 @@ export async function multicall(
   calls: any[],
   options?
 ) {
-  console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2])
-  console.log(multicallAbi)
+  // console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2])
+  // console.log(multicallAbi)
 
-  const web3 = new Web3(new Web3.providers.HttpProvider("http://135.125.8.163:8585"))
+  console.log("networks[network].rpc ", networks[network].rpc[0])
+  const web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]))
   const multi = new web3.eth.Contract(multicallAbi, networks[network].multicall);
 
   const itf = new Interface(ERC20ABI);
-  console.log(
-    calls.map((call) => [
-      call[0].toLowerCase(),
-      itf.encodeFunctionData(call[1], call[2])
-    ])
-  )
+
   try {
     const res = await multi.methods.aggregate(
       calls.map((call) => [
@@ -357,7 +353,6 @@ export async function multicall(
         itf.encodeFunctionData(call[1], call[2])
       ])
     ).call({}, options.blockTag);
-    console.log(res);
     return res;
   } catch (e) {
     return Promise.reject(e);

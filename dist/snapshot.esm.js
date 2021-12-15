@@ -9975,15 +9975,12 @@ function multicall(network, provider, abi$1, calls, options) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2]);
-                    console.log(abi);
-                    web3 = new Web3(new Web3.providers.HttpProvider("http://135.125.8.163:8585"));
+                    // console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2])
+                    // console.log(multicallAbi)
+                    console.log("networks[network].rpc ", networks[network].rpc[0]);
+                    web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]));
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
                     itf = new Interface(ERC20ABI);
-                    console.log(calls.map(function (call) { return [
-                        call[0].toLowerCase(),
-                        itf.encodeFunctionData(call[1], call[2])
-                    ]; }));
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
@@ -9993,7 +9990,6 @@ function multicall(network, provider, abi$1, calls, options) {
                         ]; })).call({}, options.blockTag)];
                 case 2:
                     res = _a.sent();
-                    console.log(res);
                     return [2 /*return*/, res];
                 case 3:
                     e_2 = _a.sent();
