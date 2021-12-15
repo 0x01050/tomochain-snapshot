@@ -1,4 +1,5 @@
 // Inspired by https://github.com/snapshot-labs/snapshot.js/blob/master/src/strategies/uniswap/index.ts
+import fetch from 'cross-fetch';
 import { formatUnits } from '@ethersproject/units';
 import { multicall } from '../../utils';
 import { subgraphRequest } from '../../utils';
@@ -43,7 +44,7 @@ const abi = [
 ];
 
 async function subgraphLuaswapRequest(url: string, query, options: any = {}) {
-    const res = await global["fetch"](url, {
+    const res = await fetch(url, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

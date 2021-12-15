@@ -10148,7 +10148,7 @@ function subgraphLuaswapRequest(url, query, options) {
         var res, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, global["fetch"](url, {
+                case 0: return [4 /*yield*/, fetch$1(url, {
                         method: 'POST',
                         headers: __assign({ Accept: 'application/json', 'Content-Type': 'application/json' }, options === null || options === void 0 ? void 0 : options.headers),
                         body: JSON.stringify(query)
