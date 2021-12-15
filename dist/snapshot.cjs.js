@@ -10176,13 +10176,13 @@ function subgraphLuaswapRequest(url, query, options) {
     });
 }
 var stakedAddress = "0x8Bcf7880d2Bae3E2705e7D90D28Bd417bd29020d";
-function multicallLuaFarm(network, options, calls) {
+function multicallLuaFarm(network, blockTag, calls) {
     return __awaiter(this, void 0, void 0, function () {
         var web3, multi, itf, res, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(network.multicall, options, calls[0][0], calls[0][1], calls[0][2]);
+                    console.log(network.multicall, blockTag, calls[0][0], calls[0][1], calls[0][2]);
                     console.log(abi);
                     web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]));
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
@@ -10193,7 +10193,7 @@ function multicallLuaFarm(network, options, calls) {
                     return [4 /*yield*/, multi.methods.aggregate(calls.map(function (call) { return [
                             call[0].toLowerCase(),
                             itf.encodeFunctionData(call[1], call[2])
-                        ]; })).call({}, options.blockTag)];
+                        ]; })).call({}, blockTag)];
                 case 2:
                     res = _a.sent();
                     return [2 /*return*/, res];
@@ -10223,7 +10223,7 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                         })];
                 case 1:
                     pairsInfo = _a.sent();
-                    return [4 /*yield*/, multicallLuaFarm(network, options, addresses.map(function (address) { return [
+                    return [4 /*yield*/, multicallLuaFarm(network, blockTag, addresses.map(function (address) { return [
                             stakedAddress,
                             'userInfo',
                             [0, address]

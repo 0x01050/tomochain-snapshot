@@ -60,8 +60,8 @@ async function subgraphLuaswapRequest(url: string, query, options: any = {}) {
 const lpTokenAddress = "0x88ba0bd9e1f90ccc21bdf7d33cb67fa5743da036";
 const stakedAddress = "0x8Bcf7880d2Bae3E2705e7D90D28Bd417bd29020d";
 
-async function multicallLuaFarm(network, options, calls) {
-    console.log(network.multicall, options, calls[0][0], calls[0][1], calls[0][2])
+async function multicallLuaFarm(network, blockTag, calls) {
+    console.log(network.multicall, blockTag, calls[0][0], calls[0][1], calls[0][2])
     console.log(multicallAbi)
 
     const web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]))
@@ -75,7 +75,7 @@ async function multicallLuaFarm(network, options, calls) {
                 call[0].toLowerCase(),
                 itf.encodeFunctionData(call[1], call[2])
             ])
-        ).call({}, options.blockTag);
+        ).call({}, blockTag);
 
         return res;
     } catch (e) {
@@ -116,7 +116,7 @@ export async function strategy(
     // get staked balance then convert to to LP balance
     let stakedLPBalances = await multicallLuaFarm(
         network,
-        options,
+        blockTag,
         addresses.map((address: any) => [
             stakedAddress,
             'userInfo',
@@ -124,7 +124,7 @@ export async function strategy(
         ])
     );
     console.log(stakedLPBalances);
-    
+
     // get LP balance
     const lpBalances = await multicall(
         network,
