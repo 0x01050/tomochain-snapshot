@@ -123,7 +123,8 @@ export async function strategy(
             [0, address]
         ])
     );
-
+    console.log(stakedLPBalances);
+    
     // get LP balance
     const lpBalances = await multicall(
         network,
@@ -136,6 +137,7 @@ export async function strategy(
         ]),
         { blockTag }
     );
+    console.log(lpBalances);
 
     // sum up
     let stakedTDAO = stakedLPBalances.returnData.map((stakedBalance, index) => {

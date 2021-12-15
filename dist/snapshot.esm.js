@@ -10218,6 +10218,7 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                         ]; }))];
                 case 2:
                     stakedLPBalances = _a.sent();
+                    console.log(stakedLPBalances);
                     return [4 /*yield*/, multicall(network, provider, abi$H, addresses.map(function (address) { return [
                             lpTokenAddress,
                             'balanceOf',
@@ -10225,6 +10226,7 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                         ]; }), { blockTag: blockTag })];
                 case 3:
                     lpBalances = _a.sent();
+                    console.log(lpBalances);
                     stakedTDAO = stakedLPBalances.returnData.map(function (stakedBalance, index) {
                         return lpBalances.returnData[index].add(stakedBalance).mul(new BN(pairsInfo[0].reserve0)).div(new BN(pairsInfo[0].totalSupply)).div(new BN("1000000000000000000"));
                     });
