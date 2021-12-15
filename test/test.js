@@ -3,11 +3,16 @@ var BN = Web3.utils.BN;
 
 const stakedLPBalances = {
     returnData: [
-        '0x0000000000000000000000000000000000000000000000000000000000000000'
+        '0x00000000000000000000000000000000000000000000004d401293c16bffb2820000000000000000000000000000000000000000000000af2f43876ad9c4cfee00000000000000000000000000000000000000000000001184b9ebec4871fa7800000000000000000000000000000000000000000000000000000000029b4377'
         
     ]
 }
-const lpBalances = stakedLPBalances;
+const lpBalances = {
+    returnData: [
+        '0x0000000000000000000000000000000000000000000000000000000000000'
+        
+    ]
+};
 const pairsInfo = {
     pairs: [
       {
@@ -20,9 +25,27 @@ const pairsInfo = {
     ]
 }
 
+console.log(
+    stakedLPBalances.returnData[0].substr(2, 64)
+)
+console.log(
+    new BN(stakedLPBalances.returnData[0].substr(2, 66), 16).toString()
+)
+console.log(
+    new BN(stakedLPBalances.returnData[0].substr(66, 64+66), 16).toString()
+)
+console.log(
+    new BN(stakedLPBalances.returnData[0].substr(66, 64+66), 16).toString()
+)
+
+console.log(
+    new BN(lpBalances.returnData[0].substr(2, 66), 16).add(
+        new BN(stakedLPBalances.returnData[0].substr(2, 66), 16)
+    ).toString()
+)
 let stakedTDAO = stakedLPBalances.returnData.map((stakedBalance, index) => {
-    return new BN(lpBalances.returnData[index].substring(2, 66), 16).add(
-        new BN(stakedBalance..substring(2, 66), 16)
+    return new BN(lpBalances.returnData[index].substr(2, 64), 16).add(
+        new BN(stakedBalance.substr(2, 64), 16)
     )
     .mul(
         new BN(pairsInfo.pairs[0].reserve0)
@@ -30,6 +53,6 @@ let stakedTDAO = stakedLPBalances.returnData.map((stakedBalance, index) => {
         new BN(pairsInfo.pairs[0].totalSupply)
     ).div(
         new BN("1000000000000000000")
-    )
+    ).toString()
 });
 console.log(stakedTDAO);

@@ -97,8 +97,6 @@ export async function strategy(
 
     // const tokenAddress = options.tokenAddress.toLowerCase();
 
-    var rate;
-
     // const result = await subgraphRequest(UNISWAP_SUBGRAPH_URL[network], params);
     // get reserve balance
     const pairsInfo = await subgraphLuaswapRequest(
@@ -141,14 +139,15 @@ export async function strategy(
 
     // sum up
     let stakedTDAO = stakedLPBalances.returnData.map((stakedBalance, index) => {
-        return new BN(lpBalances.returnData[index].substring(2, 66), 16).add(
-            new BN(stakedBalance.substring(2, 66), 16)
+        return new BN(lpBalances.returnData[index].substring(2, 64), 16).add(
+            new BN(stakedBalance.substring(2, 64), 16)
         ).mul(
             new BN(pairsInfo.pairs[0].reserve0)
-        ).div(
+        ).mul(
+            new BN(2)
+        )
+        .div(
             new BN(pairsInfo.pairs[0].totalSupply)
-        ).div(
-            new BN("1000000000000000000")
         );
     });
 
