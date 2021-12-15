@@ -10207,13 +10207,12 @@ function multicallLuaFarm(network, options, calls) {
 }
 function strategy$1J(space, network, provider, addresses, options, snapshot) {
     return __awaiter(this, void 0, void 0, function () {
-        var blockTag, lpTokenAddress, tokenAddress, pairsInfo, stakedLPBalances, lpBalances, stakedTDAO;
+        var blockTag, lpTokenAddress, pairsInfo, stakedLPBalances, lpBalances, stakedTDAO;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     blockTag = typeof snapshot === 'number' ? snapshot : 'latest';
                     lpTokenAddress = options.lpTokenAddress.toLowerCase();
-                    tokenAddress = options.tokenAddress.toLowerCase();
                     return [4 /*yield*/, subgraphLuaswapRequest("https://api.luaswap.org/subgraphs/name/phucngh/Luaswap", {
                             "operationName": "pairByAddress",
                             "variables": {
