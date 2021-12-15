@@ -144,9 +144,9 @@ export async function strategy(
         return new BN(lpBalances.returnData[index]).add(
             new BN(stakedBalance)
         ).mul(
-            new BN(pairsInfo.data.pairs[0].reserve0)
+            new BN(pairsInfo.pairs[0].reserve0)
         ).div(
-            new BN(pairsInfo.data.pairs[0].totalSupply)
+            new BN(pairsInfo.pairs[0].totalSupply)
         ).div(
             new BN("1000000000000000000")
         );;
