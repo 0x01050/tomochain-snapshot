@@ -116,12 +116,12 @@ export async function strategy(
     // get staked balance then convert to to LP balance
     let stakedLPBalances = await multicallLuaFarm(
         network,
+        options,
         addresses.map((address: any) => [
             stakedAddress,
             'userInfo',
             [0, address]
-        ]),
-        { blockTag }
+        ])
     );
 
     // get LP balance

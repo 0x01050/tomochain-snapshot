@@ -10211,11 +10211,11 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                         })];
                 case 1:
                     pairsInfo = _a.sent();
-                    return [4 /*yield*/, multicallLuaFarm(network, addresses.map(function (address) { return [
+                    return [4 /*yield*/, multicallLuaFarm(network, options, addresses.map(function (address) { return [
                             stakedAddress,
                             'userInfo',
                             [0, address]
-                        ]; }), { blockTag: blockTag })];
+                        ]; }))];
                 case 2:
                     stakedLPBalances = _a.sent();
                     return [4 /*yield*/, multicall(network, provider, abi$H, addresses.map(function (address) { return [
