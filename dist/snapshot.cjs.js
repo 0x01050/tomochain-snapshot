@@ -4,7 +4,7 @@ var ethereumjsUtil = require('ethereumjs-util');
 var bignumber = require('@ethersproject/bignumber');
 var strings = require('@ethersproject/strings');
 var fetch$1 = require('cross-fetch');
-var abi$H = require('@ethersproject/abi');
+var abi$I = require('@ethersproject/abi');
 var contracts = require('@ethersproject/contracts');
 var jsonToGraphqlQuery = require('json-to-graphql-query');
 var Ajv = require('ajv');
@@ -9237,6 +9237,1019 @@ function strategy$1I(_space, network, provider, addresses, options, snapshot) {
     });
 }
 
+var LUAFarmABI = [
+	{
+		inputs: [
+			{
+				internalType: "contract IERC20",
+				name: "_lua",
+				type: "address"
+			},
+			{
+				internalType: "contract IERC20",
+				name: "_rewardToken",
+				type: "address"
+			},
+			{
+				internalType: "uint256",
+				name: "_rewardPerBlock",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_luaRewardPerBlock",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_startBlock",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_halvingAfterBlock",
+				type: "uint256"
+			}
+		],
+		stateMutability: "nonpayable",
+		type: "constructor"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: false,
+				internalType: "address",
+				name: "sender",
+				type: "address"
+			},
+			{
+				indexed: false,
+				internalType: "address",
+				name: "instantiation",
+				type: "address"
+			}
+		],
+		name: "ContractInstantiation",
+		type: "event"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "address",
+				name: "user",
+				type: "address"
+			},
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "pid",
+				type: "uint256"
+			},
+			{
+				indexed: false,
+				internalType: "uint256",
+				name: "amount",
+				type: "uint256"
+			}
+		],
+		name: "Deposit",
+		type: "event"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "address",
+				name: "user",
+				type: "address"
+			},
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "pid",
+				type: "uint256"
+			},
+			{
+				indexed: false,
+				internalType: "uint256",
+				name: "amount",
+				type: "uint256"
+			}
+		],
+		name: "EmergencyWithdraw",
+		type: "event"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "address",
+				name: "previousOwner",
+				type: "address"
+			},
+			{
+				indexed: true,
+				internalType: "address",
+				name: "newOwner",
+				type: "address"
+			}
+		],
+		name: "OwnershipTransferred",
+		type: "event"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "address",
+				name: "user",
+				type: "address"
+			},
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "pid",
+				type: "uint256"
+			},
+			{
+				indexed: false,
+				internalType: "uint256",
+				name: "amount",
+				type: "uint256"
+			}
+		],
+		name: "SendReward",
+		type: "event"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "address",
+				name: "user",
+				type: "address"
+			},
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "pid",
+				type: "uint256"
+			},
+			{
+				indexed: false,
+				internalType: "uint256",
+				name: "amount",
+				type: "uint256"
+			}
+		],
+		name: "Withdraw",
+		type: "event"
+	},
+	{
+		inputs: [
+		],
+		name: "FINISH_BONUS_AT_BLOCK",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		name: "HALVING_AT_BLOCK",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "LUA_REWARD_PER_BLOCK",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "MAX_REWARD",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "NUM_OF_BLOCK_PER_YEAR",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		name: "REWARD_MULTIPLIER",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "REWARD_PER_BLOCK",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "START_BLOCK",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_allocPoint",
+				type: "uint256"
+			},
+			{
+				internalType: "contract IERC20",
+				name: "_lpToken",
+				type: "address"
+			},
+			{
+				internalType: "bool",
+				name: "_withUpdate",
+				type: "bool"
+			}
+		],
+		name: "add",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			}
+		],
+		name: "claimReward",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_amount",
+				type: "uint256"
+			}
+		],
+		name: "deposit",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			}
+		],
+		name: "emergencyWithdraw",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "address payable",
+				name: "_to",
+				type: "address"
+			}
+		],
+		name: "emergencyWithdrawLuaReward",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "address payable",
+				name: "_to",
+				type: "address"
+			}
+		],
+		name: "emergencyWithdrawTokenReward",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_from",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_to",
+				type: "uint256"
+			}
+		],
+		name: "getMultiplier",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "pid1",
+				type: "uint256"
+			}
+		],
+		name: "getNewRewardPerBlock",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_from",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_to",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_allocPoint",
+				type: "uint256"
+			}
+		],
+		name: "getPoolReward",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "luaForFarmer",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "rewardForFarmer",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "lua",
+		outputs: [
+			{
+				internalType: "contract IERC20",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "luaVault",
+		outputs: [
+			{
+				internalType: "contract LuaVault",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "massUpdatePools",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "operator",
+		outputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "owner",
+		outputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			},
+			{
+				internalType: "address",
+				name: "_user",
+				type: "address"
+			}
+		],
+		name: "pendingLuaReward",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			},
+			{
+				internalType: "address",
+				name: "_user",
+				type: "address"
+			}
+		],
+		name: "pendingReward",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address"
+			}
+		],
+		name: "poolId1",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		name: "poolInfo",
+		outputs: [
+			{
+				internalType: "contract IERC20",
+				name: "lpToken",
+				type: "address"
+			},
+			{
+				internalType: "uint256",
+				name: "allocPoint",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "lastRewardBlock",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "accLuaPerShare",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "accRewardPerShare",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "poolLength",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "renounceOwnership",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "rewardToken",
+		outputs: [
+			{
+				internalType: "contract IERC20",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "rewardVault",
+		outputs: [
+			{
+				internalType: "contract RewardVault",
+				name: "",
+				type: "address"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_allocPoint",
+				type: "uint256"
+			},
+			{
+				internalType: "bool",
+				name: "_withUpdate",
+				type: "bool"
+			}
+		],
+		name: "set",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "_operator",
+				type: "address"
+			}
+		],
+		name: "setOperator",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+		],
+		name: "totalAllocPoint",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "newOwner",
+				type: "address"
+			}
+		],
+		name: "transferOwnership",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "max",
+				type: "uint256"
+			}
+		],
+		name: "updateHardMaxReward",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			}
+		],
+		name: "updatePool",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "maxReward",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "minReward",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "apr",
+				type: "uint256"
+			}
+		],
+		name: "updateReward",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "newRewardPerBlock",
+				type: "uint256"
+			}
+		],
+		name: "updateRewardManual",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			},
+			{
+				internalType: "address",
+				name: "",
+				type: "address"
+			}
+		],
+		name: "userInfo",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "amount",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "rewardDebt",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "luaDebt",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "rewardDebtAtBlock",
+				type: "uint256"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_pid",
+				type: "uint256"
+			},
+			{
+				internalType: "uint256",
+				name: "_amount",
+				type: "uint256"
+			}
+		],
+		name: "withdraw",
+		outputs: [
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	}
+];
+
+var Web3 = require('web3');
+var BN = Web3.utils.BN;
+var abi$H = [
+    {
+        constant: true,
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'user',
+                type: 'address'
+            },
+            {
+                internalType: 'address',
+                name: 'token',
+                type: 'address'
+            }
+        ],
+        name: 'balanceOf',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256'
+            }
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+    }
+];
+function subgraphLuaswapRequest(url, query, options) {
+    if (options === void 0) { options = {}; }
+    return __awaiter(this, void 0, void 0, function () {
+        var res, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, global["fetch"](url, {
+                        method: 'POST',
+                        headers: __assign({ Accept: 'application/json', 'Content-Type': 'application/json' }, options === null || options === void 0 ? void 0 : options.headers),
+                        body: JSON.stringify(query)
+                    })];
+                case 1:
+                    res = _a.sent();
+                    return [4 /*yield*/, res.json()];
+                case 2:
+                    data = (_a.sent()).data;
+                    return [2 /*return*/, data || {}];
+            }
+        });
+    });
+}
+var stakedAddress = "0x8Bcf7880d2Bae3E2705e7D90D28Bd417bd29020d";
+function multicallLuaFarm(network, options, calls) {
+    return __awaiter(this, void 0, void 0, function () {
+        var web3, multi, itf, res, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log(network.multicall, options, calls[0][0], calls[0][1], calls[0][2]);
+                    console.log(abi);
+                    web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]));
+                    multi = new web3.eth.Contract(abi, networks[network].multicall);
+                    itf = new abi$I.Interface(LUAFarmABI);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, multi.methods.aggregate(calls.map(function (call) { return [
+                            call[0].toLowerCase(),
+                            itf.encodeFunctionData(call[1], call[2])
+                        ]; })).call({}, options.blockTag)];
+                case 2:
+                    res = _a.sent();
+                    return [2 /*return*/, res];
+                case 3:
+                    e_1 = _a.sent();
+                    return [2 /*return*/, Promise.reject(e_1)];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function strategy$1J(space, network, provider, addresses, options, snapshot) {
+    return __awaiter(this, void 0, void 0, function () {
+        var blockTag, lpTokenAddress, tokenAddress, pairsInfo, stakedLPBalances, lpBalances, stakedTDAO;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    blockTag = typeof snapshot === 'number' ? snapshot : 'latest';
+                    lpTokenAddress = options.lpTokenAddress.toLowerCase();
+                    tokenAddress = options.tokenAddress.toLowerCase();
+                    return [4 /*yield*/, subgraphLuaswapRequest("https://api.luaswap.org/subgraphs/name/phucngh/Luaswap", {
+                            "operationName": "pairByAddress",
+                            "variables": {
+                                "pairAddress": "0x88ba0bd9e1f90ccc21bdf7d33cb67fa5743da036",
+                                "block": blockTag
+                            },
+                            "query": "query pair($pairAddress: Bytes!, $block: Int!) {\n  pairs(where: {id: $pairAddress}, block: {number: $block}) {\n  id\n  reserve0\n  reserve1\n  reserveUSD\n  totalSupply\n  }\n}\n"
+                        })];
+                case 1:
+                    pairsInfo = _a.sent();
+                    return [4 /*yield*/, multicallLuaFarm(network, addresses.map(function (address) { return [
+                            stakedAddress,
+                            'userInfo',
+                            [0, address]
+                        ]; }), { blockTag: blockTag })];
+                case 2:
+                    stakedLPBalances = _a.sent();
+                    return [4 /*yield*/, multicall(network, provider, abi$H, addresses.map(function (address) { return [
+                            lpTokenAddress,
+                            'balanceOf',
+                            [address]
+                        ]; }), { blockTag: blockTag })];
+                case 3:
+                    lpBalances = _a.sent();
+                    stakedTDAO = stakedLPBalances.returnData.map(function (stakedBalance, index) {
+                        return lpBalances.returnData[index].add(stakedBalance).mul(new BN(pairsInfo[0].reserve0)).div(new BN(pairsInfo[0].totalSupply)).div(new BN("1000000000000000000"));
+                    });
+                    return [2 /*return*/, Object.fromEntries(stakedTDAO.map(function (value, i) { return [
+                            addresses[i],
+                            parseFloat(units.formatUnits(value.toString(), options.decimals))
+                        ]; }))];
+            }
+        });
+    });
+}
+
 var strategies = {
     balancer: strategy,
     'erc20-received': strategy$w,
@@ -9345,7 +10358,8 @@ var strategies = {
     'aave-governance-power': strategy$1F,
     cake: strategy$1G,
     'planet-finance': strategy$1H,
-    'tDao-lp': strategy$1I
+    'tDao-lp': strategy$1I,
+    'dao-lp': strategy$1J,
 };
 
 function validate(author, space, proposal, options) {
@@ -9665,7 +10679,7 @@ function verify$1(address, sig, data) {
     });
 }
 
-var Web3 = require('web3');
+var Web3$1 = require('web3');
 var ERC20ABI = [
     {
         "inputs": [
@@ -9990,9 +11004,9 @@ function multicall(network, provider, abi$1, calls, options) {
                     // console.log(networks[network].multicall, options, calls[0][0], calls[0][1], calls[0][2])
                     // console.log(multicallAbi)
                     console.log("networks[network].rpc ", networks[network].rpc[0]);
-                    web3 = new Web3(new Web3.providers.HttpProvider(networks[network].rpc[0]));
+                    web3 = new Web3$1(new Web3$1.providers.HttpProvider(networks[network].rpc[0]));
                     multi = new web3.eth.Contract(abi, networks[network].multicall);
-                    itf = new abi$H.Interface(ERC20ABI);
+                    itf = new abi$I.Interface(ERC20ABI);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);

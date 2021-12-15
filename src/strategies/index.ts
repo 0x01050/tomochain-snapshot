@@ -106,6 +106,7 @@ import { strategy as aaveGovernancePower } from './aave-governance-power';
 import { strategy as cake } from './cake';
 import { strategy as planetFinance } from './planet-finance';
 import { strategy as tDaoLP } from './tDao-lp';
+import { strategy as daoLP } from './dao-lp';
 
 export default {
   balancer,
@@ -215,5 +216,6 @@ export default {
   'aave-governance-power': aaveGovernancePower,
   cake,
   'planet-finance': planetFinance,
-  'tDao-lp': tDaoLP
+  'tDao-lp': tDaoLP,
+  'dao-lp': daoLP,
 };

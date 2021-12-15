@@ -117,6 +117,7 @@ declare const _default: {
         cake: typeof import("./strategies/cake").strategy;
         'planet-finance': typeof import("./strategies/planet-finance").strategy;
         'tDao-lp': typeof import("./strategies/tDao-lp").strategy;
+        'dao-lp': typeof import("./strategies/dao-lp").strategy;
     };
     schemas: {
         space: {

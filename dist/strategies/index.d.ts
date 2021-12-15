@@ -106,6 +106,7 @@ import { strategy as aaveGovernancePower } from './aave-governance-power';
 import { strategy as cake } from './cake';
 import { strategy as planetFinance } from './planet-finance';
 import { strategy as tDaoLP } from './tDao-lp';
+import { strategy as daoLP } from './dao-lp';
 declare const _default: {
     balancer: typeof balancer;
     'erc20-received': typeof erc20Received;
@@ -215,5 +216,6 @@ declare const _default: {
     cake: typeof cake;
     'planet-finance': typeof planetFinance;
     'tDao-lp': typeof tDaoLP;
+    'dao-lp': typeof daoLP;
 };
 export default _default;

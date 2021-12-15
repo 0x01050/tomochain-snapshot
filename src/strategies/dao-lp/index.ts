@@ -7,22 +7,8 @@ import { abi as multicallAbi } from '../../abi/Multicall.json';
 export const author = 'anhnt';
 export const version = '0.1.0';
 import LUAFarmABI from "./lua-farm-abi.json";
-
-import fetch from 'cross-fetch';
 import { Interface } from '@ethersproject/abi';
-import { Contract } from '@ethersproject/contracts';
-import { StaticJsonRpcProvider } from '@ethersproject/providers';
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
-import Ajv from 'ajv';
-import addFormats from 'ajv-formats';
 import _strategies from '../../strategies';
-import Multicaller from '../..//utils/multicaller';
-import getProvider from '../..//utils/provider';
-import validations from '../..//validations';
-
-import { signMessage, getBlockNumber } from '../../utils/web3';
-import { getHash, verify } from '../../sign/utils';
-import gateways from '../../gateways.json';
 import networks from '../../networks.json';
 const Web3 = require('web3')
 var BN = Web3.utils.BN;
@@ -95,7 +81,6 @@ async function multicallLuaFarm(network, options, calls) {
         return Promise.reject(e);
     }
 }
-
 
 export async function strategy(
     space,
