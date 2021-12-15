@@ -10228,7 +10228,7 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                     lpBalances = _a.sent();
                     console.log(lpBalances);
                     stakedTDAO = stakedLPBalances.returnData.map(function (stakedBalance, index) {
-                        return lpBalances.returnData[index].add(stakedBalance).mul(new BN(pairsInfo[0].reserve0)).div(new BN(pairsInfo[0].totalSupply)).div(new BN("1000000000000000000"));
+                        return new BN(lpBalances.returnData[index]).add(new BN(stakedBalance)).mul(new BN(pairsInfo[0].reserve0)).div(new BN(pairsInfo[0].totalSupply)).div(new BN("1000000000000000000"));
                     });
                     return [2 /*return*/, Object.fromEntries(stakedTDAO.map(function (value, i) { return [
                             addresses[i],

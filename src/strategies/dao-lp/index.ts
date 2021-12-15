@@ -141,7 +141,9 @@ export async function strategy(
 
     // sum up
     let stakedTDAO = stakedLPBalances.returnData.map((stakedBalance, index) => {
-        return lpBalances.returnData[index].add(stakedBalance).mul(
+        return new BN(lpBalances.returnData[index]).add(
+            new BN(stakedBalance)
+        ).mul(
             new BN(pairsInfo[0].reserve0)
         ).div(
             new BN(pairsInfo[0].totalSupply)
