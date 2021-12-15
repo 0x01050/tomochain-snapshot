@@ -94,7 +94,7 @@ export async function strategy(
 
     const lpTokenAddress = options.lpTokenAddress.toLowerCase();
 
-    const tokenAddress = options.tokenAddress.toLowerCase();
+    // const tokenAddress = options.tokenAddress.toLowerCase();
 
     var rate;
 
