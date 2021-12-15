@@ -111,8 +111,8 @@ export async function strategy(
             },
             "query": "query pair($pairAddress: Bytes!, $block: Int!) {\n  pairs(where: {id: $pairAddress}, block: {number: $block}) {\n  id\n  reserve0\n  reserve1\n  reserveUSD\n  totalSupply\n  }\n}\n"
         }
-    );
-
+    ); 
+    console.log(pairsInfo);
     // get staked balance then convert to to LP balance
     let stakedLPBalances = await multicallLuaFarm(
         network,
@@ -144,9 +144,9 @@ export async function strategy(
         return new BN(lpBalances.returnData[index]).add(
             new BN(stakedBalance)
         ).mul(
-            new BN(pairsInfo[0].reserve0)
+            new BN(pairsInfo.data.pairs[0].reserve0)
         ).div(
-            new BN(pairsInfo[0].totalSupply)
+            new BN(pairsInfo.data.pairs[0].totalSupply)
         ).div(
             new BN("1000000000000000000")
         );;
