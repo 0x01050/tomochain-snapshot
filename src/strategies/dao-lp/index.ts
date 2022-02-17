@@ -100,7 +100,7 @@ export async function strategy(
     // const result = await subgraphRequest(UNISWAP_SUBGRAPH_URL[network], params);
     // get reserve balance
     const pairsInfo = await subgraphLuaswapRequest(
-        "https://api.luaswap.org/subgraphs/name/phucngh/Luaswap",
+        "https://api.luaswap.org/subgraphs/name/phucngh/Luaswap3",
         {
             "operationName": "pairByAddress",
             "variables": {
