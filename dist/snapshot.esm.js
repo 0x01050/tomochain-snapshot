@@ -10201,7 +10201,7 @@ function strategy$1J(space, network, provider, addresses, options, snapshot) {
                 case 0:
                     blockTag = typeof snapshot === 'number' ? snapshot : 'latest';
                     lpTokenAddress = options.lpTokenAddress.toLowerCase();
-                    return [4 /*yield*/, subgraphLuaswapRequest("https://api.luaswap.org/subgraphs/name/phucngh/Luaswap", {
+                    return [4 /*yield*/, subgraphLuaswapRequest("https://api.luaswap.org/subgraphs/name/phucngh/Luaswap3", {
                             "operationName": "pairByAddress",
                             "variables": {
                                 "pairAddress": "0x88ba0bd9e1f90ccc21bdf7d33cb67fa5743da036",
