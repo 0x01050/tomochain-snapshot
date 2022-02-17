@@ -122,7 +122,7 @@ async function multicallLuaFarm(network, options, calls) {
 
 async function getScore() {
     const result = await subgraphLuaswapRequest(
-        "https://api.luaswap.org/subgraphs/name/phucngh/Luaswap",
+        "https://api.luaswap.org/subgraphs/name/phucngh/Luaswap3",
         {
             "operationName": "pairByAddress",
             "variables": {
