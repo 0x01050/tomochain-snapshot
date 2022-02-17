@@ -1,5 +1,8 @@
 # Snapshot.js
 
+### !!!! Warning !!!
+You need to build this repository for other projects reference to work. 
+
 ### Install
 Snapshot.js was designed to work both in the browser and in Node.js.
 
